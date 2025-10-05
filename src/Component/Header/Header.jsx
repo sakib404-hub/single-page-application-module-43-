@@ -12,6 +12,7 @@ const Header = () => {
                 <NavLink to='/' className='nav-link'>Home</NavLink>
                 <NavLink to='/mobiles' className='nav-link'>Mobiles</NavLink>
                 <NavLink to='/laptops' className='nav-link'>Laptops</NavLink>
+                <NavLink to='/users' className='nav-link'>Users</NavLink>
             </div>
             <div>
                 <button className='btn'>Join Now</button>

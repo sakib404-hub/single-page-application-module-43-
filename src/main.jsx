@@ -6,24 +6,31 @@ import { StrictMode } from 'react';
 import Home from './Component/Home/Home';
 import Mobiles from './Component/Mobiles/Mobiles';
 import Laptops from './Component/Laptops/Laptops'
+import Users from './Component/Users/Users';
 
 const router = createBrowserRouter([
   {
     path: '/',
     Component: Root,
     children: [
-      { index: true, Component: Home },
-      { path: '/mobiles', Component: Mobiles },
-      { path: '/laptops', Component: Laptops }
+      {
+        index: true,
+        Component: Home
+      },
+      {
+        path: '/mobiles',
+        Component: Mobiles
+      },
+      {
+        path: '/laptops',
+        Component: Laptops
+      },
+      {
+        path: '/users',
+        Component: Users,
+        loader: () => fetch('https://jsonplaceholder.typicode.com/users')
+      }
     ]
-  },
-  {
-    path: '/about',
-    element: <div>This is the About</div>
-  },
-  {
-    path: '/blogs',
-    element: <div>All of my blogs are Here!</div>
   }
 ])
 
@@ -41,4 +48,10 @@ createRoot(document.getElementById('root')).render(
  * ? 1 --> Importing browserRouter and RouterProvider
  * ? 2 --> Providing the defination as router to the CreateBrowserRouter
  * ? 3 --> Passing it to the values
+ */
+
+/**
+ * ? 1 . use :: usersPromise > Suspense > Promise > use(userPromise)
+ * ? 2 . useState  + useEffect (() => {}, [])
+ * ? 3 . load Data Before Router Component is Rendered
  */
