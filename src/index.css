@@ -1,2 +1,18 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #facc15; /* yellow-400 */
+}
+.nav-link.active {
+  color: #facc15;        /* Highlight color */
+  border-bottom: 2px solid #facc15; /* Underline effect */
+}
