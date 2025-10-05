@@ -2,11 +2,19 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider, } from "react-router";
 import Root from './Component/Root/Root';
-import { StrictMode } from 'react';
+import { StrictMode, Suspense } from 'react';
 import Home from './Component/Home/Home';
 import Mobiles from './Component/Mobiles/Mobiles';
 import Laptops from './Component/Laptops/Laptops'
 import Users from './Component/Users/Users';
+import UserDetails from './Component/UserDetails/UserDetails';
+
+const fetchPromise = async () => {
+  const url = 'https://jsonplaceholder.typicode.com/users';
+  const res = await fetch(url);
+  return res.json();
+}
+const userPromise = fetchPromise();
 
 const router = createBrowserRouter([
   {
@@ -27,8 +35,14 @@ const router = createBrowserRouter([
       },
       {
         path: '/users',
-        Component: Users,
-        loader: () => fetch('https://jsonplaceholder.typicode.com/users')
+        element: <Suspense>
+          <Users userPromise={userPromise}></Users>
+        </Suspense>
+      },
+      {
+        path: '/users/:userId',
+        loader: ({ params }) => fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
+        Component: UserDetails
       }
     ]
   }
