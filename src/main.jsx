@@ -8,6 +8,8 @@ import Mobiles from './Component/Mobiles/Mobiles';
 import Laptops from './Component/Laptops/Laptops'
 import Users from './Component/Users/Users';
 import UserDetails from './Component/UserDetails/UserDetails';
+import Posts from './Component/Posts/Posts';
+import CardDetails from './Component/CardDetails/CardDetails';
 
 const fetchPromise = async () => {
   const url = 'https://jsonplaceholder.typicode.com/users';
@@ -15,6 +17,7 @@ const fetchPromise = async () => {
   return res.json();
 }
 const userPromise = fetchPromise();
+
 
 const router = createBrowserRouter([
   {
@@ -43,6 +46,15 @@ const router = createBrowserRouter([
         path: '/users/:userId',
         loader: ({ params }) => fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
         Component: UserDetails
+      },
+      {
+        path: '/posts',
+        Component: Posts
+      },
+      {
+        path: '/posts/:postId',
+        loader: ({ params }) => fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
+        Component: CardDetails
       }
     ]
   }

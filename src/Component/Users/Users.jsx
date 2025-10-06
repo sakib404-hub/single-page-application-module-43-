@@ -4,7 +4,7 @@ import UserCard from '../UserCard/UserCard';
 const Users = ({ userPromise }) => {
 
     const userData = use(userPromise);
-    console.log(userData);
+    // console.log(userData);
     return (
         <div className='mt-10'>
             <h2 className='text-2xl text-center'>This is the User Component</h2>
