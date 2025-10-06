@@ -57,6 +57,10 @@ const router = createBrowserRouter([
         Component: CardDetails
       }
     ]
+  },
+  {
+    path: '*',
+    element: <h3>404 Not Found!</h3>
   }
 ])
 
@@ -80,4 +84,14 @@ createRoot(document.getElementById('root')).render(
  * ? 1 . use :: usersPromise > Suspense > Promise > use(userPromise)
  * ? 2 . useState  + useEffect (() => {}, [])
  * ? 3 . load Data Before Router Component is Rendered
+ */
+
+/**
+ * ! Summary
+ * ? 1. Router provider
+ * ? 2.  createBrowsweRouter
+ * ? 3. navLink, Link
+ * ? 4. useNavigate
+ * ? 5. useNavigation
+ * ? 6. useParams
  */
